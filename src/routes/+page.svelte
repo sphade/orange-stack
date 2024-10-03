@@ -10,3 +10,5 @@
 	<input name="name" type="text" />
 	<button>submit</button>
 </form>
+
+<a href="/page-2">page 2</a>
