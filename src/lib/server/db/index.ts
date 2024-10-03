@@ -1,6 +1,16 @@
-import { drizzle } from 'drizzle-orm/better-sqlite3';
-import Database from 'better-sqlite3';
-import { env } from '$env/dynamic/private';
-if (!env.DATABASE_URL) throw new Error('DATABASE_URL is not set');
-const client = new Database(env.DATABASE_URL);
-export const db = drizzle(client);
+import { drizzle } from 'drizzle-orm/d1';
+import type { DrizzleD1Database } from 'drizzle-orm/d1';
+
+let db: DrizzleD1Database | null = null;
+
+export function createClient(dbInstance: D1Database) {
+	db = drizzle(dbInstance);
+	return db;
+}
+
+export function getClient() {
+	if (!db) {
+		throw new Error('Database client not initialized');
+	}
+	return db;
+}

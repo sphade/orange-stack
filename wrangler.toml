@@ -29,8 +29,8 @@ compatibility_flags = [ "nodejs_compat" ]
 binding = "DB" # i.e. available in your Worker on env.DB
 database_name = "housebuyDBStaging"
 database_id = "39fc9cda-afdd-4de0-a074-fe177649ba03"
-migrations_dir = "drizzle/migrations"
-
+migrations_dir = "migrations"
+preview_database_id = "DB" # Required for Pages local development
 # Bind a Durable Object. Durable objects are a scale-to-zero compute primitive based on the actor model.
 # Durable Objects can live for as long as needed. Use these when you need a long-running "server", such as in realtime apps.
 # Docs: https://developers.cloudflare.com/workers/runtime-apis/durable-objects

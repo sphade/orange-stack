@@ -1,2 +1,12 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script lang="ts">
+	import { enhance } from '$app/forms';
+
+	export let data;
+	console.log('🚀 ~ data:', data);
+</script>
+
+<form action="/" method="post" use:enhance>
+	<input name="email" type="email" />
+	<input name="text" type="name" />
+	<button>submit</button>
+</form>
