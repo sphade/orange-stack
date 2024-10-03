@@ -7,6 +7,6 @@
 
 <form action="/" method="post" use:enhance>
 	<input name="email" type="email" />
-	<input name="text" type="name" />
+	<input name="name" type="text" />
 	<button>submit</button>
 </form>
