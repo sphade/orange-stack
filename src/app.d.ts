@@ -1,10 +1,10 @@
 // See https://kit.svelte.dev/docs/types#app
 
 import type { DrizzleD1Database } from 'drizzle-orm/d1';
-import * as schema from './lib/server/db/schema';
+import type { Session, User } from './lib/server/db/schema';
 
 // for information about these interfaces
-
+type Schema = typeof import('./lib/server/db/schema');
 declare global {
 	namespace App {
 		interface Platform {
@@ -15,7 +15,9 @@ declare global {
 			ctx: ExecutionContext;
 		}
 		interface Locals {
-			db: DrizzleD1Database<typeof schema>;
+			db: DrizzleD1Database<Schema>;
+			user: User | null;
+			session: Session | null;
 		}
 	}
 }

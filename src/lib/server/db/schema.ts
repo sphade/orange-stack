@@ -1,22 +1,18 @@
-import { relations } from 'drizzle-orm';
+import { relations, type InferSelectModel } from 'drizzle-orm';
 import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core';
 
-export const user = sqliteTable('user', {
-	id: integer('id').primaryKey({ autoIncrement: true }),
-	name: text('name').notNull(),
-	email: text('email').notNull()
+export const userTable = sqliteTable('user', {
+	id: integer('id').primaryKey()
 });
 
-export const posts = sqliteTable('posts', {
-	id: integer('id').primaryKey(),
-	content: text('content').notNull(),
-	authorId: integer('author_id')
+export const sessionTable = sqliteTable('session', {
+	id: text('id').primaryKey(),
+	userId: integer('user_id')
 		.notNull()
-		.references(() => user.id, {})
+		.references(() => userTable.id),
+	expiresAt: integer('expires_at', {
+		mode: 'timestamp'
+	}).notNull()
 });
-export const userRelations = relations(user, ({ many }) => ({
-	posts: many(posts)
-}));
-export const postsRelations = relations(posts, ({ one }) => ({
-	author: one(user, { fields: [posts.authorId], references: [user.id] })
-}));
+export type User = InferSelectModel<typeof userTable>;
+export type Session = InferSelectModel<typeof sessionTable>;

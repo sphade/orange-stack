@@ -46,6 +46,8 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@oslojs/crypto": "^1.0.1",
+		"@oslojs/encoding": "^1.1.0",
 		"better-sqlite3": "^10.0.0",
 		"bits-ui": "^0.21.16",
 		"clsx": "^2.1.1",

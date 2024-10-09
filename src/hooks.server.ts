@@ -1,3 +1,8 @@
+import {
+	deleteSessionTokenCookie,
+	setSessionTokenCookie,
+	validateSessionToken
+} from '$lib/server/auth';
 import { createClient } from '$lib/server/db';
 import type { Handle } from '@sveltejs/kit';
 import { sequence } from '@sveltejs/kit/hooks';
@@ -19,6 +24,26 @@ const preloadFonts: Handle = async ({ event, resolve }) => {
 	});
 
 	return response;
+};
+
+export const handleAuth: Handle = async ({ event, resolve }) => {
+	const token = event.cookies.get('session') ?? null;
+	if (token === null) {
+		event.locals.user = null;
+		event.locals.session = null;
+		return resolve(event);
+	}
+
+	const { session, user } = await validateSessionToken(token, event.locals.db);
+	if (session !== null) {
+		setSessionTokenCookie(event, token, session.expiresAt);
+	} else {
+		deleteSessionTokenCookie(event);
+	}
+
+	event.locals.session = session;
+	event.locals.user = user;
+	return resolve(event);
 };
 
 export const handle = sequence(preloadFonts, handleDb);
