@@ -4,6 +4,8 @@
 	let { data } = $props();
 </script>
 
+<h1>sveltekit + cloudflare fullstack template</h1>
+
 <form action="/" method="post" use:enhance>
 	<input name="email" type="email" />
 	<input name="name" type="text" />
