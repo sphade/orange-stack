@@ -27,8 +27,8 @@ compatibility_flags = [ "nodejs_compat" ]
 # Docs: https://developers.cloudflare.com/pages/functions/bindings/#d1-databases
 [[d1_databases]]
 binding = "DB" # i.e. available in your Worker on env.DB
-database_name = "housebuyDBStaging"
-database_id = "39fc9cda-afdd-4de0-a074-fe177649ba03"
+database_name = "testDb"
+database_id = "bcc02974-0467-453f-af24-6f3826add0b1"
 migrations_dir = "migrations"
 preview_database_id = "DB" # Required for Pages local development
 # Bind a Durable Object. Durable objects are a scale-to-zero compute primitive based on the actor model.
