@@ -1,10 +1,10 @@
 import { eq } from 'drizzle-orm';
-import { encodeBase32, encodeBase32LowerCaseNoPadding, encodeHexLowerCase } from '@oslojs/encoding';
+import { encodeBase32LowerCaseNoPadding, encodeHexLowerCase } from '@oslojs/encoding';
 import { sha256 } from '@oslojs/crypto/sha2';
-import { sessionTable, userTable, type Session, type User } from './db/schema';
+import { sessionTable, userTable, type Session, type User } from '../db/schema';
 import type { DrizzleD1Database } from 'drizzle-orm/d1';
 import type { RequestEvent } from '@sveltejs/kit';
-type Schema = typeof import('./db/schema');
+type Schema = typeof import('../db/schema');
 
 export function generateSessionToken(): string {
 	const bytes = new Uint8Array(20);
@@ -57,7 +57,7 @@ export async function validateSessionToken(
 	return { session, user };
 }
 
-export async function invalidateSession(sessionId: string, db: DrizzleD1Database<Schema>): void {
+export async function invalidateSession(sessionId: string, db: DrizzleD1Database<Schema>) {
 	await db.delete(sessionTable).where(eq(sessionTable.id, sessionId));
 }
 

@@ -2,7 +2,7 @@ import {
 	deleteSessionTokenCookie,
 	setSessionTokenCookie,
 	validateSessionToken
-} from '$lib/server/auth';
+} from '$lib/server/auth/session';
 import { createClient } from '$lib/server/db';
 import type { Handle } from '@sveltejs/kit';
 import { sequence } from '@sveltejs/kit/hooks';
@@ -46,4 +46,4 @@ export const handleAuth: Handle = async ({ event, resolve }) => {
 	return resolve(event);
 };
 
-export const handle = sequence(preloadFonts, handleDb);
+export const handle = sequence(preloadFonts, handleDb, handleAuth);
