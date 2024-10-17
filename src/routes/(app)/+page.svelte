@@ -17,7 +17,8 @@
 {/each}
 <h1>sveltekit + cloudflare fullstack template</h1>
 
-<form action="/" use:enhance method="POST">
+<form action="/" use:enhance method="POST" enctype="multipart/form-data">
 	<input type="text" name="content" />
+	<input type="file" name="file" />
 	<button>submit</button>
 </form>

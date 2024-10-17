@@ -19,10 +19,12 @@ export const load = (async ({ locals: { db, user } }) => {
 }) satisfies PageServerLoad;
 
 export const actions = {
-	default: async ({ locals: { db, user }, request }) => {
+	default: async ({ locals: { db, user, bucket }, request }) => {
 		const form = await request.formData();
 		const content = form.get('content') as string;
+		const file = form.get('file') as File;
 		if (!user) redirect(308, '/login');
+		await bucket.put(file.name, file);
 		await db.insert(todoTable).values({ userId: user.id, content });
 	}
 };
