@@ -13,6 +13,7 @@ export const handleDb: Handle = async ({ event, resolve }) => {
 		const db = createClient(platform.env.DB);
 
 		event.locals.db = db;
+		event.locals.bucket = platform.env.BUCKET;
 	}
 
 	return resolve(event);

@@ -10,6 +10,7 @@ declare global {
 		interface Platform {
 			env: {
 				DB: D1Database;
+				BUCKET: R2Bucket;
 			};
 			cf: CfProperties;
 			ctx: ExecutionContext;
@@ -18,6 +19,7 @@ declare global {
 			db: DrizzleD1Database<Schema>;
 			user: User | null;
 			session: Session | null;
+			bucket: R2Bucket;
 		}
 	}
 }
