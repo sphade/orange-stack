@@ -17,7 +17,9 @@
 		"db:studio": "drizzle-kit studio",
 		"db:generate": "drizzle-kit generate",
 		"db:local:migrate": "wrangler d1 migrations apply DB --local",
-		"db:local:studio": "LOCAL_DB_PATH=$(find .wrangler/state/v3/d1/miniflare-D1DatabaseObject -type f -name '*.sqlite' -print -quit) drizzle-kit studio"
+		"db:local:studio": "LOCAL_DB_PATH=$(find .wrangler/state/v3/d1/miniflare-D1DatabaseObject -type f -name '*.sqlite' -print -quit) drizzle-kit studio",
+		"db:local:s": "drizzle-kit studio --config=drizzle-dev.config.ts",
+		"db:local:push": "drizzle-kit push --config=drizzle-dev.config.ts"
 	},
 	"devDependencies": {
 		"@cloudflare/workers-types": "^4.20240925.0",

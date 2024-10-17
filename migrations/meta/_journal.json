@@ -15,6 +15,20 @@
       "when": 1728549576972,
       "tag": "0001_mean_puma",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1728655652359,
+      "tag": "0002_short_the_executioner",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1728655933288,
+      "tag": "0003_true_rocket_racer",
+      "breakpoints": true
     }
   ]
 }
