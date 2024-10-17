@@ -25,6 +25,10 @@ export const actions = {
 		const file = form.get('file') as File;
 		if (!user) redirect(308, '/login');
 		await bucket.put(file.name, file);
-		await db.insert(todoTable).values({ userId: user.id, content });
+		await db.insert(todoTable).values({
+			userId: user.id,
+			content,
+			media: `https://pub-23cce33cce57409880410f1196c3b258.r2.dev/${file.name}`
+		});
 	}
 };

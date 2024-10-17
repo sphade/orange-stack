@@ -12,6 +12,9 @@
 </h1>
 {#each data?.todos?.todos as todo}
 	<div>{todo?.content}</div>
+	{#if todo.media}
+		<img src={todo.media} alt="todo" />
+	{/if}
 {:else}
 	no todo
 {/each}
