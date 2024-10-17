@@ -7,5 +7,5 @@ export const google = new Google(
 	GOOGLE_CLIENT_SECRET,
 	dev
 		? 'http://localhost:5173/api/google/callback'
-		: 'http://orange-stack.pages.dev/api/google/callback'
+		: 'https://orange-stack.pages.dev/api/google/callback'
 );
